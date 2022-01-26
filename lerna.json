@@ -1,0 +1,38 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "bootstrap": {
+    "scope": [
+      "@khaled/*"
+    ]
+  },
+  "command": {
+    "publish": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish",
+      "ignoreChanges": [
+        "**/__tests__/**",
+        "**/test/**",
+        "**/*/.gitignore",
+        "**/dist/**",
+        "**/build/**",
+        "**/*.md",
+        "**/*/package*.json",
+        "**/*.json",
+        "**/*/.eslint*",
+        "**/*/.git*",
+        "**/*/.eslintcache",
+        "**/*/.env*",
+        "**/migrations/**"
+      ],
+      "registry": "private-npm-registry-here"
+    },
+    "version": {
+      "conventionalCommits": true
+    }
+  }
+}

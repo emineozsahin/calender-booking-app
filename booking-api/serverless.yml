@@ -1,0 +1,25 @@
+service: booking-api
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'eu-central-1'}
+  apiGateway:
+    minimumCompressionSize: 0
+
+functions:
+  main:
+    handler: dist/main.handler
+    events:
+      - http:
+          method: ANY
+          cors: true
+          path: /
+      - http:
+          method: ANY
+          cors: true
+          path: '{proxy+}'

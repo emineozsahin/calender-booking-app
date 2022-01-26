@@ -1,0 +1,23 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "booking-api",
+    "booking-app"
+  ],
+  "scripts": {
+    "start": "yarn bootstrap && lerna run start --parallel",
+    "build": "yarn bootstrap && lerna run build --parallel",
+    "bootstrap": "lerna bootstrap",
+    "clean": "rm -rf lib/ packages/**/lib/** && lerna clean",
+    "publish": "yarn build && lerna publish",
+    "lint": "lerna run lint --parallel",
+    "lint:fix": "lerna run lint --parallel -- --fix",
+    "version": "yarn build && lerna version",
+    "commit": "npx git-cz",
+    "release": "yarn publish"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
