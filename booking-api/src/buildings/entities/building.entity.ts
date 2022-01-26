@@ -6,7 +6,9 @@ import { MeetingRoom } from './meeting-room.entity';
 
 export type BuildingDocument = Building & Document;
 
-@Schema()
+@Schema({
+  timestamps: true
+})
 @ObjectType()
 export class Building {
   @Prop()

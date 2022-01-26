@@ -5,7 +5,7 @@ import { Document, Types } from 'mongoose';
 
 export type CompanyDocument = Company & Document;
 
-@Schema()
+@Schema({ timestamps: true})
 @ObjectType()
 export class Company {
   @Prop()
