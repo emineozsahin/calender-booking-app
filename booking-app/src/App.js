@@ -1,10 +1,10 @@
 
 import './App.css'
-import BookingForm from './BookingForm'
-import { BigCalendar } from './Calendar'
+import BookingForm from './components/BookingForm'
+import { BigCalendar } from './components/Calendar'
 import { useQuery, useLazyQuery, useMutation } from '@apollo/client'
 import { useEffect, useState } from 'react'
-import { ALL_BOOKINGS_QUERY, CREATE_BOOKING_MUTATION, GET_BUILDINGS_QUERY } from './graphql'
+import { ALL_BOOKINGS_QUERY, CREATE_BOOKING_MUTATION, GET_BUILDINGS_QUERY } from './helpers/graphql-operations'
 
 function App () {
   const [bookings, setBookings] = useState([])
@@ -36,8 +36,8 @@ function App () {
       // transform backend data into ui component's data
       const events = data.bookings.map(booking => ({
         title: booking.name,
-        start: booking.startDate,
-        end: booking.endDate
+        start: new Date(booking.startDate),
+        end: new Date(booking.endDate)
       }))
       console.log(events)
       setBookings(events)
@@ -65,8 +65,8 @@ function App () {
       {(error || createBookingError || getBuildingsError) && <div> Error {(error || createBookingError || getBuildingsError).message} </div>}
       {data &&
         <>
-          <BookingForm availableRooms={building.meetingRooms} onSubmit={createNewEvent} />
-          {bookings && <BigCalendar events={bookings} />}
+          <BookingForm className='app_booking-form' availableRooms={building.meetingRooms} onSubmit={createNewEvent} />
+          <BigCalendar className='app_big-calendar' events={bookings} />
         </>}
 
     </div>

@@ -1,0 +1,9 @@
+.booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  /* width: 100%; */
+  padding: 4px 10px;
+}

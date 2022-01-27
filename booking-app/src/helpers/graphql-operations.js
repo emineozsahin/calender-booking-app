@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 
+// TODO: use graphql-codegen
 export const ALL_BOOKINGS_QUERY = gql`
   query bookings($buildingId: ID!) {
     bookings(buildingId: $buildingId) {

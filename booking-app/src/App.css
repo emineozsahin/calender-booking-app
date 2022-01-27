@@ -1,3 +1,17 @@
 .App {
   text-align: center;
+  display: flex;
+  margin: 0 auto;
+  width: clamp(40%,80%,100%);
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.app_booking-form {
+  flex: 1;
+}
+
+.app_booking-calendar {
+  flex: 2;
 }

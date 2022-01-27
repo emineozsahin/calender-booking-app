@@ -17,8 +17,8 @@ const localizer = dateFnsLocalizer({
   locales
 })
 
-export const BigCalendar = ({ events }) => (
-  <div>
+export const BigCalendar = ({ events, className }) => (
+  <div style={{ width: '100%' }} className={`${className}`}>
     <Calendar
       localizer={localizer}
       events={events}
@@ -27,4 +27,5 @@ export const BigCalendar = ({ events }) => (
       style={{ height: 500, margin: '50px' }}
     />
   </div>
+
 )
