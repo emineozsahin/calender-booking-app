@@ -16,8 +16,11 @@ export class BookingsResolver {
   }
 
   @Query(() => [Booking], { name: 'bookings' })
-  findAll(@Args('buildingId', { type: () => ID }) buildingId: string) {
-    return this.bookingsService.findAllByBuilding(buildingId);
+  findAll(
+    @Args('buildingId', { type: () => ID }) buildingId: string,
+    @Args('meetingRoomId', { type: () => ID }) meetingRoomId: string
+  ) {
+    return this.bookingsService.findAllByBuilding(buildingId, meetingRoomId);
   }
   
   @Query(() => String, { name: 'hello' })

@@ -20,8 +20,8 @@ export class BookingsService {
     return `This action returns all bookings`;
   }
 
-  async findAllByBuilding(buildingId: string) {
-    return this.bookingModel.find({ building: buildingId}).lean()
+  async findAllByBuilding(buildingId: string, meetingRoomId: string) {
+    return this.bookingModel.find({ building: buildingId, meetingRoom: meetingRoomId}).lean()
   }
 
   findOne(id: number) {

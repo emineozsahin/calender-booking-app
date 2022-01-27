@@ -5,6 +5,7 @@ import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import 'react-datepicker/dist/react-datepicker.css'
+import { memo } from 'react'
 const locales = {
   'en-US': enUS
 }
@@ -17,7 +18,7 @@ const localizer = dateFnsLocalizer({
   locales
 })
 
-export const BigCalendar = ({ events, className }) => (
+export const BigCalendar = memo(({ events, className }) => (
   <div style={{ width: '100%' }} className={`${className}`}>
     <Calendar
       localizer={localizer}
@@ -27,5 +28,4 @@ export const BigCalendar = ({ events, className }) => (
       style={{ height: 500, margin: '50px' }}
     />
   </div>
-
-)
+))

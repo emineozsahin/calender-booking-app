@@ -1,31 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, memo, useCallback } from 'react'
 import Datepicker from 'react-datepicker'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import './BookingForm.css'
 
-export default function BookingForm ({ onSubmit, availableRooms, className }) {
-  const [eventForm, setEventForm] = useState({})
+export default memo(function BookingForm ({ onSubmit, chosenRoom, className }) {
+  const [eventForm, setEventForm] = useState({ meetingRoom: chosenRoom._id })
 
-  const handleNameChanged = (e) => {
+  const handleNameChanged = useCallback((e) => {
     setEventForm({ ...eventForm, name: e.target.value })
-  }
-  const handleStartDateChanged = (date) => {
+  }, [setEventForm, eventForm])
+
+  const handleStartDateChanged = useCallback((date) => {
     setEventForm({ ...eventForm, startDate: date })
-  }
+  }, [setEventForm, eventForm])
 
-  const handleRoomChanged = e => {
-    console.log(e.target.value)
-    e.stopPropagation()
-    setEventForm({ ...eventForm, meetingRoom: e.target.value })
-  }
-  const handleEndDateChanged = (date) => {
+  const handleEndDateChanged = useCallback((date) => {
     setEventForm({ ...eventForm, endDate: date })
-  }
+  }, [setEventForm, eventForm])
 
-  const handleAddEventClicked = (e) => {
+  const handleAddEventClicked = useCallback((e) => {
     e.stopPropagation()
     onSubmit(eventForm)
-  }
+  }, [setEventForm, eventForm])
 
   return (
     <div className={`booking-form ${className}`}>
@@ -33,9 +29,8 @@ export default function BookingForm ({ onSubmit, availableRooms, className }) {
       <div>
         <input type='text' className='field' placeholder='meeting name' onChange={handleNameChanged} />
         <div className='field'>
-          <select onChange={handleRoomChanged}>
-            <option value='' selected disabled hidden>Choose a Meeting Room</option>
-            {availableRooms.map(room => <option value={room._id} key={room._id}>{room.name}</option>)}
+          Room: <select disabled>
+            <option hidden value={chosenRoom._id}>{chosenRoom.name}</option>
           </select>
         </div>
         <Datepicker className='field' placeholderText='start date' showTimeSelect selected={eventForm.startDate} onChange={handleStartDateChanged} />
@@ -44,4 +39,4 @@ export default function BookingForm ({ onSubmit, availableRooms, className }) {
       </div>
     </div>
   )
-}
+})

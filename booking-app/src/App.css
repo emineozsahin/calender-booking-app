@@ -1,4 +1,9 @@
 .App {
+  display: flex;
+  flex-direction: column;
+}
+
+.App-wrapper {
   text-align: center;
   display: flex;
   margin: 0 auto;
@@ -7,9 +12,12 @@
   align-items: center;
   justify-content: center;
 }
-
 .app_booking-form {
   flex: 1;
+}
+
+.App-room-dropdown {
+  align-self: center;
 }
 
 .app_booking-calendar {

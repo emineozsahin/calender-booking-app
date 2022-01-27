@@ -110,7 +110,7 @@ type Mutation {
 
 type Query {
   booking(potato: Int!): Booking!
-  bookings(buildingId: ID!): [Booking!]!
+  bookings(buildingId: ID!, meetingRoomId: ID!): [Booking!]!
   building(id: Int!): Building!
   buildings: [Building!]!
   companies: [Company!]!
