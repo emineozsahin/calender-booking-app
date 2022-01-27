@@ -28,3 +28,12 @@ An application that allows multiple entities sharing the same building to split 
 
 ## Deployment
 1. Automated Deployment is setup on the master branch for both the frontend and the backend via Netlify and Heroku respectively
+
+
+# TODO
+1. Validation
+2. Permissions
+3. User Management & Authentication
+4. Error handling
+5. Add Tests
+6. Styling & Design
