@@ -21,7 +21,7 @@ export default memo(function BookingForm ({ onSubmit, chosenRoom, className }) {
   const handleAddEventClicked = useCallback((e) => {
     e.stopPropagation()
     onSubmit(eventForm)
-  }, [setEventForm, eventForm])
+  }, [eventForm, onSubmit])
 
   return (
     <div className={`booking-form ${className}`}>
