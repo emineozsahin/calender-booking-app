@@ -29,7 +29,7 @@ function App () {
         }
       })
     }
-  }, [building])
+  }, [building, getBookings])
 
   useEffect(() => {
     if (data && data.bookings) {
