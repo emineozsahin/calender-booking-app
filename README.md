@@ -40,3 +40,4 @@ An application that allows multiple entities sharing the same building to split 
 7. Implement remaining CRUD operations 
 8. Graphql field documentation
 9. Implement Caching
+10. use graphql-codegen to sync graphql schemas between frontend and backend automatically
