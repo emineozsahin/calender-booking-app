@@ -1,8 +1,8 @@
 import { Company } from './../../companies/entities/company.entity';
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { MeetingRoom } from './meeting-room.entity';
+import { MeetingRoom, MeetingRoomSchema } from './meeting-room.entity';
 
 export type BuildingDocument = Building & Document;
 
@@ -11,16 +11,20 @@ export type BuildingDocument = Building & Document;
 })
 @ObjectType()
 export class Building {
+
+  @Field(() => ID, { description: 'id '})
+  _id?: string
+  
   @Prop()
   @Field(() => String, { description: 'Example field (placeholder)' })
   name: string
 
-  @Prop()
+  @Prop({ type: [MeetingRoomSchema] })
   @Field(() => [MeetingRoom], { description: 'Example field (placeholder)' })
   meetingRooms: Array<MeetingRoom>
 
   @Prop({type: Types.ObjectId, ref: 'Company'})
-  @Field(() => Int, { description: 'Example field (placeholder)' })
+  @Field(() => [ID], { description: 'Example field (placeholder)' })
   companiesInBuilding: Array<Company>
 
   @Prop()

@@ -9,12 +9,14 @@ export class BookingsResolver {
   constructor(private readonly bookingsService: BookingsService) {}
 
   @Mutation(() => Booking)
-  createBooking(@Args('createBookingInput') createBookingInput: CreateBookingInput) {
-    return this.bookingsService.create(createBookingInput);
+  async createBooking(@Args('createBookingInput') createBookingInput: CreateBookingInput) {
+    const result = await this.bookingsService.create(createBookingInput);
+    console.log(result)
+    return result
   }
 
   @Query(() => [Booking], { name: 'bookings' })
-  findAll(@Args('buildingId', { type: () => Int }) buildingId: string) {
+  findAll(@Args('buildingId', { type: () => ID }) buildingId: string) {
     return this.bookingsService.findAllByBuilding(buildingId);
   }
   

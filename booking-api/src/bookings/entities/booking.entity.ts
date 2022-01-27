@@ -1,7 +1,7 @@
 import { Building } from './../../buildings/entities/building.entity';
 import { MeetingRoom } from '../../buildings/entities/meeting-room.entity'
 import { Company } from './../../companies/entities/company.entity';
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
@@ -12,6 +12,10 @@ export type BookingDocument = Booking & Document;
 })
 @ObjectType()
 export class Booking {
+
+  @Field(() => ID, { description: 'id '})
+  _id?: string
+  
   @Prop()
   @Field(() => String, { description: 'Example field (placeholder)' })
   name: string
@@ -25,12 +29,12 @@ export class Booking {
   building: Building
 
   @Prop({type: Types.ObjectId})
-  @Field(() => [String], { description: 'Example field (placeholder)' })
+  @Field(() => String, { description: 'Example field (placeholder)' })
   meetingRoom: MeetingRoom
 
-  @Prop()
-  @Field(() => String, { description: 'Example field (placeholder)' })
-  bookedBy: string
+  // @Prop()
+  // @Field(() => String, { description: 'Example field (placeholder)' })
+  // bookedBy: string
 
   @Prop()
   @Field(() => Date, { description: 'Example field (placeholder)' })

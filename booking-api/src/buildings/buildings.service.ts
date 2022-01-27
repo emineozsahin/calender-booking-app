@@ -13,7 +13,7 @@ export class BuildingsService {
   }
 
   findAll() {
-    return `This action returns all buildings`;
+    return this.buildingModel.find({}).lean()
   }
 
   findOne(id: number) {

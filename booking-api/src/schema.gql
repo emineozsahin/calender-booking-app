@@ -1,0 +1,152 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Booking {
+  """id """
+  _id: ID!
+
+  """Example field (placeholder)"""
+  building: String!
+
+  """Example field (placeholder)"""
+  company: String!
+
+  """Example field (placeholder)"""
+  endDate: DateTime!
+
+  """Example field (placeholder)"""
+  meetingRoom: String!
+
+  """Example field (placeholder)"""
+  name: String!
+
+  """Example field (placeholder)"""
+  startDate: DateTime!
+}
+
+type Building {
+  """id """
+  _id: ID!
+
+  """Example field (placeholder)"""
+  address: String!
+
+  """Example field (placeholder)"""
+  companiesInBuilding: [ID!]!
+
+  """Example field (placeholder)"""
+  meetingRooms: [MeetingRoom!]!
+
+  """Example field (placeholder)"""
+  name: String!
+}
+
+type Company {
+  """id """
+  _id: ID!
+  buildings: Building!
+
+  """Example field (placeholder)"""
+  employees: Int!
+
+  """Company nae"""
+  name: String!
+}
+
+input CreateBookingInput {
+  """Building"""
+  building: ID!
+
+  """Company"""
+  company: ID!
+
+  """End Date"""
+  endDate: DateTime!
+
+  """Meeting Room"""
+  meetingRoom: ID!
+
+  """Name"""
+  name: String!
+
+  """Start Date"""
+  startDate: DateTime!
+}
+
+input CreateBuildingInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateCompanyInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type MeetingRoom {
+  """id """
+  _id: ID!
+  company: ID!
+  name: String!
+}
+
+type Mutation {
+  createBooking(createBookingInput: CreateBookingInput!): Booking!
+  createBuilding(createBuildingInput: CreateBuildingInput!): Building!
+  createCompany(createCompanyInput: CreateCompanyInput!): Company!
+  removeBooking(id: Int!): Booking!
+  removeBuilding(id: Int!): Building!
+  removeCompany(id: Int!): Company!
+  updateBooking(updateBookingInput: UpdateBookingInput!): Booking!
+  updateBuilding(updateBuildingInput: UpdateBuildingInput!): Building!
+  updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
+}
+
+type Query {
+  booking(potato: Int!): Booking!
+  bookings(buildingId: ID!): [Booking!]!
+  building(id: Int!): Building!
+  buildings: [Building!]!
+  companies: [Company!]!
+  company(id: Int!): Company!
+  hello: String!
+}
+
+input UpdateBookingInput {
+  """Building"""
+  building: ID
+
+  """Company"""
+  company: ID
+
+  """End Date"""
+  endDate: DateTime
+  id: Int!
+
+  """Meeting Room"""
+  meetingRoom: ID
+
+  """Name"""
+  name: String
+
+  """Start Date"""
+  startDate: DateTime
+}
+
+input UpdateBuildingInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateCompanyInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}

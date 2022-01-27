@@ -9,11 +9,11 @@ import { Model } from 'mongoose';
 @Injectable()
 export class BookingsService {
 
-  constructor(@InjectModel(Booking.name) private buildingModel: Model<BookingDocument>, private buildingsService: BuildingsService) {}
+  constructor(@InjectModel(Booking.name) private bookingModel: Model<BookingDocument>) {}
 
 
   create(createBookingInput: CreateBookingInput) {
-    return 'This action adds a new booking';
+    return this.bookingModel.create(createBookingInput)
   }
 
   findAll() {
@@ -21,7 +21,7 @@ export class BookingsService {
   }
 
   async findAllByBuilding(buildingId: string) {
-    return this.buildingModel.find({ building: buildingId}).lean()
+    return this.bookingModel.find({ building: buildingId}).lean()
   }
 
   findOne(id: number) {

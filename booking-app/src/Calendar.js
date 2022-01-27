@@ -17,18 +17,11 @@ const localizer = dateFnsLocalizer({
   locales
 })
 
-const myEventsList = [
-  {
-    title: 'Lolz',
-    start: new Date(),
-    end: new Date(2022, 6, 0)
-  }
-]
-export const BigCalendar = (props) => (
+export const BigCalendar = ({ events }) => (
   <div>
     <Calendar
       localizer={localizer}
-      events={myEventsList}
+      events={events}
       startAccessor='start'
       endAccessor='end'
       style={{ height: 500, margin: '50px' }}
