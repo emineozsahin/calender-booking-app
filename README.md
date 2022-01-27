@@ -4,7 +4,7 @@ An application that allows multiple entities sharing the same building to split 
 ## Pre-Requisites
 1. Make sure you have NodeJS installed
 2. install yarn `npm i -g yarn`
-3. (Optional) update `booking-api/.env` with a `MONGODB_URL` of your choice to run on a separate database
+3. (Optional) update `booking-api/.env` with a `MONGODB_URL` of your choice to run on a separate database (by default it uses a dev one hosted in the cloud)
 
 ## Main Technologies used
 1. [NestJS](https://nestjs.com/)
