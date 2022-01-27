@@ -37,3 +37,6 @@ An application that allows multiple entities sharing the same building to split 
 4. Error handling
 5. Add Tests
 6. Styling & Design
+7. Implement remaining CRUD operations 
+8. Graphql field documentation
+9. Implement Caching
