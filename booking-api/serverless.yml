@@ -13,7 +13,7 @@ provider:
 
 functions:
   main:
-    handler: dist/main.handler
+    handler: dist/main-serverless.handler
     events:
       - http:
           method: ANY

@@ -1,7 +1,8 @@
 module.exports = (options, webpack) => {
   const lazyImports = [
     '@nestjs/microservices/microservices-module',
-    '@nestjs/websockets/socket-module'
+    '@nestjs/websockets/socket-module',
+    '@apollo/*'
   ]
 
   return {

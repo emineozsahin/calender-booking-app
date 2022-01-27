@@ -6,7 +6,8 @@
     "booking-app"
   ],
   "scripts": {
-    "start": "yarn bootstrap && lerna run start --parallel",
+    "start": "cd booking-api && npm run-script start",
+    "watch": "yarn bootstrap && lerna run start --parallel",
     "build": "yarn bootstrap && lerna run build --parallel",
     "bootstrap": "lerna bootstrap",
     "clean": "rm -rf lib/ packages/**/lib/** && lerna clean",
