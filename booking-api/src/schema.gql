@@ -100,7 +100,7 @@ type Mutation {
   createBooking(createBookingInput: CreateBookingInput!): Booking!
   createBuilding(createBuildingInput: CreateBuildingInput!): Building!
   createCompany(createCompanyInput: CreateCompanyInput!): Company!
-  removeBooking(id: Int!): Booking!
+  deleteBooking(bookingId: ID!): Booking!
   removeBuilding(id: Int!): Building!
   removeCompany(id: Int!): Company!
   updateBooking(updateBookingInput: UpdateBookingInput!): Booking!

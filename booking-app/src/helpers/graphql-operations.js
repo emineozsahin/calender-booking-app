@@ -41,3 +41,15 @@ export const GET_BUILDINGS_QUERY = gql`
     }
   }
   `
+
+export const DELETE_BOOKING_MUTATION = gql`
+    mutation deleteBooking($bookingId: ID!) {
+      deleteBooking(bookingId: $bookingId) {
+        _id
+        name
+        meetingRoom
+        startDate
+        endDate
+      }
+    }
+  `

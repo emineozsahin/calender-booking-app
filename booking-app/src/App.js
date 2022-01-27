@@ -1,10 +1,10 @@
 
 import './App.css'
 import BookingForm from './components/BookingForm'
-import { BigCalendar } from './components/Calendar'
+import { BigCalendar } from './components/BigCalendar'
 import { useQuery, useLazyQuery, useMutation } from '@apollo/client'
 import { useEffect, useState, useCallback, memo } from 'react'
-import { ALL_BOOKINGS_QUERY, CREATE_BOOKING_MUTATION, GET_BUILDINGS_QUERY } from './helpers/graphql-operations'
+import { ALL_BOOKINGS_QUERY, CREATE_BOOKING_MUTATION, DELETE_BOOKING_MUTATION, GET_BUILDINGS_QUERY } from './helpers/graphql-operations'
 
 function App () {
   const [bookings, setBookings] = useState([])
@@ -15,6 +15,7 @@ function App () {
   const [getBookings, { loading, error, data }] = useLazyQuery(ALL_BOOKINGS_QUERY)
 
   const [createBooking, { loading: isCreateBookingLoading, error: createBookingError }] = useMutation(CREATE_BOOKING_MUTATION)
+  const [deleteBooking] = useMutation(DELETE_BOOKING_MUTATION)
 
   useEffect(() => {
     if (getBuildingsData && getBuildingsData.buildings) {
@@ -42,6 +43,7 @@ function App () {
     if (data && data.bookings) {
       // transform backend data into ui component's data
       const events = data.bookings.map(booking => ({
+        ...booking,
         title: booking.name,
         start: new Date(booking.startDate),
         end: new Date(booking.endDate)
@@ -55,6 +57,15 @@ function App () {
     e.stopPropagation()
     setCurrentRoom(building.meetingRooms.find(room => room._id === e.target.value))
   }, [setCurrentRoom, building])
+
+  const handleEventDoubleClicked = useCallback(item => {
+    deleteBooking({
+      variables: {
+        bookingId: item._id
+      },
+      refetchQueries: [ALL_BOOKINGS_QUERY]
+    })
+  }, [deleteBooking])
 
   const createNewEvent = useCallback(async submittedEvent => {
     console.log({ newEvent: submittedEvent })
@@ -85,7 +96,7 @@ function App () {
           <>
             {currentRoom && <BookingForm className='app_booking-form' chosenRoom={currentRoom} onSubmit={createNewEvent} />}
             <div className='app_big-calendar'>
-              <BigCalendar events={bookings} />
+              <BigCalendar onEventDoubleClicked={handleEventDoubleClicked} events={bookings} />
             </div>
           </>}
 

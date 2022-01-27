@@ -18,9 +18,10 @@ const localizer = dateFnsLocalizer({
   locales
 })
 
-export const BigCalendar = memo(({ events, className }) => (
+export const BigCalendar = memo(({ events, className, onEventDoubleClicked }) => (
   <div style={{ width: '100%' }} className={`${className}`}>
     <Calendar
+      onDoubleClickEvent={onEventDoubleClicked}
       localizer={localizer}
       events={events}
       startAccessor='start'

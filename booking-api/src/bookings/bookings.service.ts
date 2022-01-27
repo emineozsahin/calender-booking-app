@@ -32,7 +32,7 @@ export class BookingsService {
     return `This action updates a #${id} booking`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} booking`;
+  remove(id: string) {
+    return this.bookingModel.findByIdAndDelete(id).lean()
   }
 }

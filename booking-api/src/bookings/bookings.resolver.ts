@@ -39,7 +39,7 @@ export class BookingsResolver {
   }
 
   @Mutation(() => Booking)
-  removeBooking(@Args('id', { type: () => Int }) id: number) {
+  deleteBooking(@Args('bookingId', { type: () => ID }) id: string) {
     return this.bookingsService.remove(id);
   }
 }
