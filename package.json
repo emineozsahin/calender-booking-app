@@ -6,7 +6,7 @@
     "booking-app"
   ],
   "scripts": {
-    "start": "cd booking-api && npm run-script start",
+    "start": "cd booking-api && node dist/main",
     "build": "cd booking-api && npm run-script build",
     "watch": "yarn bootstrap && lerna run start --parallel",
     "build-all": "yarn bootstrap && lerna run build --parallel",
