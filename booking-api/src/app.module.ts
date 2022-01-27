@@ -8,12 +8,14 @@ import { BookingsModule } from './bookings/bookings.module';
 import { BuildingsModule } from './buildings/buildings.module';
 import { CompaniesModule } from './companies/companies.module';
 
-
+import { join } from 'path'
 @Module({
   imports: [
     ConfigModule.forRoot(),
     GraphQLModule.forRoot({
-      autoSchemaFile: true,
+      // autoSchemaFile: true,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],

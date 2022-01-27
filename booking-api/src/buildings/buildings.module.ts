@@ -16,7 +16,7 @@ export class BuildingsModule implements OnApplicationBootstrap {
   
   async onApplicationBootstrap() {
     const NUMBER_OF_ROOMS = 20
-
+console.log("WTTF")
     const companies = await this.companiesService.findAll().select({ _id: 1, name: 1}).lean()
     const meetingRooms: MeetingRoom[] = [... new Array(NUMBER_OF_ROOMS)].map((item, index) => {
       const middleIndex = NUMBER_OF_ROOMS / companies.length - 1
@@ -29,12 +29,13 @@ export class BuildingsModule implements OnApplicationBootstrap {
     })
 
     const buildings: Building[] = [{
-      name:'',
+      name:'Coke and Pepsi Building',
       address:'',
       meetingRooms:meetingRooms,
       companiesInBuilding: companies.map(company => company._id)
     }]
 
+    console.log('created buildings', buildings)
     await this.buildingsService.deleteAll()
     await this.buildingsService.bulkCreate(buildings)
   }
