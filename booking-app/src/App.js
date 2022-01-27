@@ -13,7 +13,7 @@ function App () {
   const { loading: getBuildingLoading, error: getBuildingsError, data: getBuildingsData } = useQuery(GET_BUILDINGS_QUERY)
   const [getBookings, { loading, error, data }] = useLazyQuery(ALL_BOOKINGS_QUERY)
 
-  const [createBooking, { data: createBookingResult, loading: isCreateBookingLoading, error: createBookingError }] = useMutation(CREATE_BOOKING_MUTATION)
+  const [createBooking, { loading: isCreateBookingLoading, error: createBookingError }] = useMutation(CREATE_BOOKING_MUTATION)
 
   useEffect(() => {
     if (getBuildingsData && getBuildingsData.buildings) {
