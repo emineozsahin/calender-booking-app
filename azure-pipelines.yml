@@ -10,11 +10,17 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: Docker@2
+  inputs:
+    containerRegistry: 'acr'
+    repository: 'calendar-booking-app'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 
-- script: node -v
+# - script: node -v
 
-- script: yarn install
-  displayName: 'yarn npm install'
+# - script: yarn install
+#   displayName: 'yarn npm install'
 
-- script: yarn build
-  displayName: 'temp'
+# - script: yarn build
+#   displayName: 'yarn build'
