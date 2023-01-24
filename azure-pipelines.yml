@@ -10,16 +10,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: '10.x'
-#   displayName: 'Install Node.js'
 
 - script: node -v
-- script:
-    npm i -g yarn
+
+- script: yarn install
   displayName: 'yarn npm install'
 
-- script:
-    yarn run build
+- script: yarn build
   displayName: 'temp'
